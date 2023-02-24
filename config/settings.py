@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-)vr55ajwdzrg=(ase0*h3kh!6hrzb1w_4rfu&7(ytj6q=d945*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [".herokuapp.com", "localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
     # 3rd Party
     "rest_framework",
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -130,10 +132,11 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
-# STATICFILES_DIRS = [
-#     BASE_DIR / 'static'
-# ]
-#
+STATICFILES_DIRS = [BASE_DIR / "static"]
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+STATIC_ROOT = BASE_DIR / "static_root"
 # MEDIA_URL = 'media/'
 #
 # MEDIA_ROOT = BASE_DIR / 'media'
