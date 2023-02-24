@@ -1,15 +1,18 @@
 from django.contrib import admin
 
 from .models import Todo
-# Register your models here.
 
+
+# Register your models here.
 @admin.register(Todo)
 class TodoAdmin(admin.ModelAdmin):
     list_display = [
-        'title',
-        'task',
-        'created',
-        'updated',
+        "title",
+        "task",
+        "created",
+        "updated",
     ]
 
-    search_fields = ['title',]
+    search_fields = [
+        "title",
+    ]
