@@ -11,6 +11,7 @@ black = "*"
 django-cors-headers = "*"
 gunicorn = "*"
 whitenoise = "*"
+python-dotenv = "==0.21.0"
 
 [dev-packages]
 
